@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+  <link rel="shortcut icon" href="img/icon_social_manager.png" type="image/x-icon">  
+  <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <title>Social Media Accounts Management System (SMAMS)</title>
+</head>
+<body class="bg-gray-100">
+
+<!-- start navbar -->
+<div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">
+  <!-- logo -->
+  <div class="flex-none w-56 flex flex-row items-center">
+    <img src="img/icon_social_manager.png" class="w-10 flex-none">
+    <strong class="capitalize ml-1 flex-1">SMAMS</strong>
+    <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
+      <i class="fad fa-list-ul"></i>
+    </button>
+  </div>
+  <!-- end logo -->
+
+  <!-- navbar content toggle -->
+  <button id="navbarToggle" class="hidden md:block md:fixed right-0 mr-6">
+    <i class="fad fa-chevron-double-down"></i>
+  </button>
+  <!-- end navbar content toggle -->
+
+  <!-- navbar content -->
+  <div id="navbar" class="animated md:hidden md:fixed md:top-0 md:w-full md:left-0 md:mt-16 md:border-t md:border-b md:border-gray-200 md:p-10 md:bg-white flex-1 pl-3 flex flex-row flex-wrap justify-between items-center md:flex-col md:items-center">
+    <!-- right -->
+    <div class="flex flex-row-reverse items-center HDnofandprof">
+      <!-- user -->
+      <div class="dropdown relative md:static">
+        <button class="menu-btn focus:outline-none focus:shadow-outline flex flex-wrap items-center">
+          <div class="w-8 h-8 overflow-hidden rounded-full">
+            <img class="w-full h-full object-cover" src="img/user.svg">
+          </div>
+          <div class="ml-2 capitalize flex">
+            <h1 class="text-sm text-gray-800 font-semibold m-0 p-0 leading-none">SMAMS</h1>
+            <i class="fad fa-chevron-down ml-2 text-xs leading-none"></i>
+          </div>
+        </button>
+        <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+        <div class="text-gray-500 menu hidden md:mt-10 md:w-full rounded bg-white shadow-md absolute z-20 right-0 w-40 mt-5 py-2 animated faster">
+          <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
+            <i class="fad fa-user-edit text-xs mr-1"></i> edit my profile
+          </a>
+          <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
+            <i class="fad fa-inbox-in text-xs mr-1"></i> my inbox
+          </a>
+          <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
+            <i class="fad fa-badge-check text-xs mr-1"></i> tasks
+          </a>
+          <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="#">
+            <i class="fad fa-comment-alt-dots text-xs mr-1"></i> chats
+          </a>
+          <hr>
+          <a class="px-4 py-2 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 hover:text-gray-900 transition-all duration-300 ease-in-out" href="login.html">
+            <i class="fad fa-user-times text-xs mr-1"></i> log out
+          </a>
+        </div>
+      </div>
+      <!-- end user -->
+
+      <!-- notification -->
+      <div class="dropdown relative mr-5 md:static">
+        <button class="text-gray-500 menu-btn p-0 m-0 hover:text-gray-900 focus:text-gray-900 focus:outline-none transition-all ease-in-out duration-300">
+          <i class="fad fa-bells"></i>
+        </button>
+        <button class="hidden fixed top-0 left-0 z-10 w-full h-full menu-overflow"></button>
+        <div class="menu hidden rounded bg-white md:right-0 md:w-full shadow-md absolute z-20 right-0 w-84 mt-5 py-2 animated faster">
+          <div class="px-4 py-2 flex flex-row justify-between items-center capitalize font-semibold text-sm">
+            <h1>notifications</h1>
+            <div class="bg-teal-100 border border-teal-200 text-teal-500 text-xs rounded px-1">
+              <strong>5</strong>
+            </div>
+          </div>
+          <hr>
+          <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
+            <div class="px-3 py-2 rounded mr-3 bg-gray-100 border border-gray-300">
+              <i class="fad fa-birthday-cake text-sm"></i>
+            </div>
+            <div class="flex-1 flex flex-rowbg-green-100">
+              <div class="flex-1">
+                <h1 class="text-sm font-semibold">poll..</h1>
+                <p class="text-xs text-gray-500">text here also</p>
+              </div>
+              <div class="text-right text-xs text-gray-500">
+                <p>4 min ago</p>
+              </div>
+            </div>
+          </a>
+          <hr>
+          <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
+            <div class="px-3 py-2 rounded mr-3 bg-gray-100 border border-gray-300">
+              <i class="fad fa-user-circle text-sm"></i>
+            </div>
+            <div class="flex-1 flex flex-rowbg-green-100">
+              <div class="flex-1">
+                <h1 class="text-sm font-semibold">mohamed..</h1>
+                <p class="text-xs text-gray-500">text here also</p>
+              </div>
+              <div class="text-right text-xs text-gray-500">
+                <p>78 min ago</p>
+              </div>
+            </div>
+          </a>
+          <hr>
+          <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
+            <div class="px-3 py-2 rounded mr-3 bg-gray-100 border border-gray-300">
+              <i class="fad fa-images text-sm"></i>
+            </div>
+            <div class="flex-1 flex flex-rowbg-green-100">
+              <div class="flex-1">
+                <h1 class="text-sm font-semibold">new imag..</h1>
+                <p class="text-xs text-gray-500">text here also</p>
+              </div>
+              <div class="text-right text-xs text-gray-500">
+                <p>65 min ago</p>
+              </div>
+            </div>
+          </a>
+          <hr>
+          <a class="flex flex-row items-center justify-start px-4 py-4 block capitalize font-medium text-sm tracking-wide bg-white hover:bg-gray-200 transition-all duration-300 ease-in-out" href="#">
+            <div class="px-3 py-2 rounded mr-3 bg-gray-100 border border-gray-300">
+              <i class="fad fa-alarm-exclamation text-sm"></i>
+            </div>
+            <div class="flex-1 flex flex-rowbg-green-100">
+              <div class="flex-1">
+                <h1 class="text-sm font-semibold">time is up..</h1>
+                <p class="text-xs text-gray-500">text here also</p>
+              </div>
+              <div class="text-right text-xs text-gray-500">
+                <p>1 min ago</p>
+              </div>
+            </div>
+          </a>
+          <hr>
+          <div class="px-4 py-2 mt-2">
+            <a href="#" class="border border-gray-300 block text-center text-xs uppercase rounded p-1 hover:text-teal-500 transition-all ease-in-out duration-500">
+              view all
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- end notification -->
+    </div>
+    <!-- end right -->
+  </div>
+  <!-- end navbar content -->
+</div>
+<!-- end navbar -->
+
+<!-- start wrapper -->
+<div class="h-screen flex flex-row flex-wrap">
+  <!-- start sidebar -->
+  <div id="sideBar" class="relative flex flex-col flex-wrap bg-white border-r border-gray-300 p-6 flex-none w-64 md:-ml-64 md:fixed md:top-0 md:z-30 md:h-screen md:shadow-xl animated faster">
+    <!-- sidebar content -->
+    <div class="flex flex-col">
+      <!-- sidebar toggle -->
+      <div class="text-right hidden md:block mb-4">
+        <button id="sideBarHideBtn">
+          <i class="fad fa-times-circle"></i>
+        </button>
+      </div>
+      <!-- end sidebar toggle -->
+
+      <!-- links -->
+      <a href="home.html" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-home icon text-xs mr-2"></i> Dashbord
+      </a>
+      <a href="manage_account.html" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-user-circle text-xs mr-2"></i> Management Acounts
+      </a>
+      <a href="manage_account.html" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-send text-xs mr-2"></i> Create Publication
+      </a>
+      <a href="#" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-user icon text-xs mr-2"></i> Management Clerk
+      </a>
+      <a href="#" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-bell icon text-xs mr-2"></i> Management Interaction
+      </a>
+      <a href="#" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-report icon text-xs mr-2"></i> Analyses And Execution
+      </a>
+      <a href="#" class="mb-3 capitalize font-medium durationSD">
+        <i class="bx bxs-cog text-xs mr-2"></i> Setting
+      </a>
+    </div>
+    <!-- end sidebar content -->
+  </div>
+  <!-- end sidebar -->
+
+  <!-- start content -->
+  <div class="bg-gray-100 flex-1 p-6 md:mt-16">
+    <!-- Content Area -->
+    <div id="contentArea">
+      <!-- If no accounts are connected, show the connect buttons -->
+      <div id="connectButtons" class="empty-state">
+        <div class="empty-state-icon">
+          <i class="fas fa-share-nodes"></i>
+        </div>
+        <h2>قم بربط حساباتك الاجتماعية</h2>
+        <p>ابدأ بربط حساباتك الاجتماعية لإدارتها جميعًا من مكان واحد.</p>
+        <div class="connect-options">
+          <button class="btn btn-platform facebook" onclick="connectPlatform('Facebook')">
+            <i class="fab fa-facebook"></i> ربط فيسبوك
+          </button>
+          <button class="btn btn-platform instagram" onclick="connectPlatform('Instagram')">
+            <i class="fab fa-instagram"></i> ربط إنستجرام
+          </button>
+        </div>
+      </div>
+
+      <!-- If accounts are connected, show the accounts grid -->
+      <div id="accountsGrid" class="accounts-grid hidden">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold">الحسابات المتصلة</h2>
+          <button class="btn btn-primary" onclick="showPlatformDialog()">
+            <i class="fas fa-plus"></i> إضافة حساب
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="accountsList">
+          <!-- Accounts will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Selection Dialog -->
+    <div id="platformDialog" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">اختر المنصة</h2>
+        <div class="space-y-4">
+          <button class="btn btn-platform facebook w-full" onclick="connectPlatform('Facebook')">
+            <i class="fab fa-facebook"></i> فيسبوك
+          </button>
+          <button class="btn btn-platform instagram w-full" onclick="connectPlatform('Instagram')">
+            <i class="fab fa-instagram"></i> إنستجرام
+          </button>
+        </div>
+        <div class="mt-6 text-right">
+          <button class="btn btn-outline" onclick="hidePlatformDialog()">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end content -->
+</div>
+<!-- end wrapper -->
+
+<script>
+  // Function to show the platform selection dialog
+  function showPlatformDialog() {
+    document.getElementById('platformDialog').classList.remove('hidden');
+  }
+
+  // Function to hide the platform selection dialog
+  function hidePlatformDialog() {
+    document.getElementById('platformDialog').classList.add('hidden');
+  }
+
+  // Function to connect to a platform
+  function connectPlatform(platform) {
+    alert(`تم اختيار منصة: ${platform}`);
+    // Here you can add the logic to connect to the selected platform
+    hidePlatformDialog();
+  }
+
+  // Function to check if there are connected accounts
+  function checkConnectedAccounts() {
+    const connectedAccounts = JSON.parse(localStorage.getItem('selectedAccounts')) || [];
+    if (connectedAccounts.length > 0) {
+      document.getElementById('connectButtons').classList.add('hidden');
+      document.getElementById('accountsGrid').classList.remove('hidden');
+      displayConnectedAccounts(connectedAccounts);
+    } else {
+      document.getElementById('connectButtons').classList.remove('hidden');
+      document.getElementById('accountsGrid').classList.add('hidden');
+    }
+  }
+
+  // Function to display connected accounts
+  function displayConnectedAccounts(accounts) {
+    const accountsList = document.getElementById('accountsList');
+    accountsList.innerHTML = accounts.map(account => `
+      <div class="account-card">
+        <div class="account-header ${account.platform.toLowerCase()}">
+          <img src="${account.img}" alt="${account.name}" class="account-avatar">
+          <div class="account-info">
+            <h3>${account.name}</h3>
+            <span class="platform-badge">
+              <i class="fab fa-${account.platform.toLowerCase()}"></i> ${account.platform}
+            </span>
+          </div>
+          <button class="btn-icon">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+        <div class="account-stats">
+          <div class="stat">
+            <span class="stat-value">${Math.floor(Math.random() * 10000).toLocaleString()}</span>
+            <span class="stat-label">المتابعون</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">${Math.floor(Math.random() * 100)}%</span>
+            <span class="stat-label">معدل التفاعل</span>
+          </div>
+        </div>
+        <div class="account-actions">
+          <button class="btn btn-outline">
+            <i class="fas fa-chart-line"></i> التحليلات
+          </button>
+          <button class="btn btn-outline" onclick="redirectToPostPage('${account.name}', '${account.img}', '${account.platform}')">
+            <i class="fas fa-pencil"></i> إنشاء منشور
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Function to redirect to the post creation page
+  function redirectToPostPage(accountName, accountImg, platform) {
+    localStorage.setItem('selectedAccountName', accountName);
+    localStorage.setItem('selectedAccountImg', accountImg);
+    localStorage.setItem('selectedPlatform', platform);
+    window.location.href = 'publication1.html';
+  }
+
+  // Check connected accounts when the page loads
+  checkConnectedAccounts();
+</script>
+
+</body>
+</html>
