@@ -103,7 +103,8 @@ document.getElementById('finishConnection').addEventListener('click', async func
     const data = {
       facebook_user_id: facebookData.data.id,
       page_ids: selectedAccountsID,
-      access_token: localStorage.getItem('facebookAccessToken');
+      access_token: localStorage.getItem('facebookAccessToken')
+      
     };
 
     try {
