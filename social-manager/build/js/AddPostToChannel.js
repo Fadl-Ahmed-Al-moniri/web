@@ -257,7 +257,7 @@ function loginWithFacebook() {
       console.log(user_token);
       const url = 'https://localhost:8000/facebook/get_info/';
       const data = {
-          facebook_user_access_token: accessToken,
+          access_token: accessToken,
       };
       const facebookResponse = await axios.post(
         url,
