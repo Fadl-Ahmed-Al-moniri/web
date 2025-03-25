@@ -103,7 +103,7 @@ document.getElementById('finishConnection').addEventListener('click', async func
     const data = {
       facebook_user_id: facebookData.data.id,
       page_ids: selectedAccountsID,
-      access_token: "EAAGy5ZBNbZBgIBOxHMXZCQC54TUBHcNNNtzqn9i9FHY6VecrB4dv9B8GwDEY9al22lG1Ie7Fh66cce541YHHeLYc8kU7mV5qGChg7dJHEZBjl0K5aTfEssTb0O31ZACCIIwemCU9Eot7GaWLMb54Gh4b5jPVXIkfC3Ub1LRlsaUSfdko75nVvupk3"
+      access_token: localStorage.getItem('facebookAccessToken');
     };
 
     try {
