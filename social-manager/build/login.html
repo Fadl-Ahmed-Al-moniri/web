@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Social Media Accounts Management System (SMAMS)</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/loader.css">
+</head>
+<body>
+    
+    <div class="loader-overlay"></div>
+
+    <div class="loader"></div>
+
+    <div class="container">
+        <div class="card">
+            <h1>Log in</h1>
+            <form id="login-form">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <div class="password-container">
+                    <label for="password">Your password</label>
+                </div>
+                <input type="password" id="password" name="password" required>
+                <button type="submit" class="login-button">Log in</button>
+                
+                <p class="terms">
+                    By continuing, you agree to the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.
+                </p>
+            </form>
+            <div class="forgot-password">
+                <a href="forgetpassword.html">Forget your password</a>
+            </div>
+        </div>
+        <div class="new-account">
+            <div class="divider">
+                <h2>New to our community</h2>
+            </div>
+            <a href="singup.html">
+                <button class="create-account-button">Create an account</button>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

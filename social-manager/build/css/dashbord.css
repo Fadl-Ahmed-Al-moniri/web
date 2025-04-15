@@ -1,0 +1,103 @@
+
+.dashboard-container{
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+    
+    /* Upper section */
+    .totals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+  
+    
+      
+    }
+    
+    .total-card {
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      color: white;
+      
+    }
+    
+    .total-card:hover {
+      transform: translateY(-5px);
+    }
+  
+    .total-card img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .total-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    
+    .total-card p {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #111;
+    }
+    
+    /* Lower section */
+    .accounts-grid {
+      display:flex;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    
+    /* Base style for all account cards */
+    .account-card {
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      color: white;
+    }
+    
+    .account-card:hover {
+      transform: scale(1.02);
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .card-header img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+    
+    .card-header h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+    
+    .card-header p {
+      font-size: 0.95rem;
+      margin: 2px 0 0 0;
+    }
+    
+    /* Instagram Colors */
+    .account-card.instagram {
+      background: linear-gradient(135deg, #fcb1d1, #f78fb3);
+    }
+    
+    /* Facebook Colors */
+    .account-card.facebook {
+      background: linear-gradient(135deg, #4b6cb7, #182848);
+    }

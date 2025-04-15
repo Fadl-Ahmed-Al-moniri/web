@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="img/icon_social_manager.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <link rel="stylesheet" href="css/loader.css">
+  <title>Social Media Accounts Management System (SMAMS)</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <!-- Switch Account Modal -->
+  <div class="loader-overlay"></div>
+  <div class="loader"></div>
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-lg font-semibold">Account</h1>
+      <button class="text-gray-500" id="closeModal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="flex justify-center space-x-4 mb-6">
+      <i id="platformIcon" class="fas fa-globe text-gray-500"></i>
+      <i class="fas fa-sync text-gray-500"></i>
+      <i class="fas fa-globe text-gray-500"></i>
+    </div>
+    <h2 id="modalTitle" class="text-xl font-bold text-center mb-6">Select accounts</h2>
+    <div class="space-y-4" id="accountsList">
+      <!-- الحسابات سيتم إضافتها هنا ديناميكيًا -->
+    </div>
+    <div class="flex justify-between items-center mt-6">
+      <div class="relative">
+        <button class="text-gray-500 flex items-center" id="needHelp">
+          Need Help
+          <i class="fas fa-caret-down ml-1"></i>
+        </button>
+        <div class="modal absolute bg-white border rounded-lg shadow-lg mt-2 p-4 w-48 hidden" id="helpModal">
+          <p class="text-gray-700">Here is some help content.</p>
+        </div>
+      </div>
+      <button class="bg-gray-200 text-gray-500 px-4 py-2 rounded-lg" id="finishConnection">
+        Finish Connection
+      </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/Acounts.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+body{
+    background-color: #e6f0ff;
+   
+}
+.chartbody{
+  
+  width: 950px;
+  height: auto;
+}
+
+.dataf{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    margin-top: 50px;
+  
+   
+   
+}
+.dataff{
+    width: 450px;
+    margin-left: 550px;
+    background-color: white;
+}
+.datafff{
+    width: 500px;
+   
+}
+.chartc-containerrr{
+    width: 400px;
+    background-color: white;
+    height: 350px; 
+    margin-top: -350px;
+}
+.duration-500{
+    margin-top: 30px;
+}
+
+.charts-container{
+    width: 500x;
+    height: 600px; 
+   
+
+}
+.colcha{
+    background-color: #f9f1f9;
+   height: 350px;
+
+   margin-top: -170px;
+}
+
+.viewschartss{
+    height: 500px;
+    width: 1000pxpx;
+    align-items: center;
+   
+    margin-top: -40px;
+}
+.content-data{
+    margin-top: 40px;
+    width: 450px;
+    height: 370px;
+    margin-left: 30px;
+}
+.tiltch {
+	margin-left: 320px;
+    color: black;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.btns {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    margin-left: 10px;
+   border-radius: 10px;
+    cursor: pointer;
+	height: 35px;
+    width: 80px;
+	color: black;
+}
+.btnt {
+    background-color: rgb(241, 245, 245);
+    width: 80px;
+	border: 10px;
+	margin-left: 10px;
+	height: 35px;
+	border-radius: 10px;
+	color: black;
+}
+.numview{
+    width: 250px;
+    height: 300px;
+   
+margin-left: 600px;
+margin-top: -400px;
+
+}
+.cardnvrg{
+    width: 200px;
+    height: 200px;
+}
+.cardnumv{
+    margin-top: 40px;
+    width: 300px;
+    height: 300px;
+}
+.cardnumvinstg{
+    margin-top: 60px;
+    width: 300px;
+    height: 300px;
+}
+.trend-up{
+    margin-left: 15px;
+}
+.iconsocial{
+    width: 80px;
+    height: 80px;
+}
+.iconsocialfacebook{
+    width: 70px;
+    height: 70px;
+}
+
+
+
+
+.circle-container{
+    width: 150px;
+    height: 150px;
+  
+    border-radius: 50%;
+    margin-left: 280px;
+    margin-top: -140px;
+	
+}
+.circle-container .circle .itemc,
+.circle-container .circle .fill{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+
+}
+.circle-container .circle .itemc{
+    clip: rect(0px, 150px, 150px, 64px);
+}
+.circle-container .circle .itemc .fill{
+    clip: rect(0px, 64px, 150px, 0px);
+    background-color: #0986e6;
+}
+
+.circle-container .circle .itemc.layer-1,
+.circle-container .circle .fill{
+    transform:  rotate(126deg);
+    animation: fill ease-in-out 3s;
+}
+@keyframes fill {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(126deg);
+    }
+}
+
+.inside-contentt{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: absolute;
+    font-weight: 700;
+    font-family: "poppins";
+    font-size: 32px;
+    line-height: 130px;
+}
+.chartc-containerr{
+    background-color: white;
+    height: 350px;
+   
+}
+
+.ulsocialmedia {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.lisocial {
+    margin-top: 10px;
+    
+}
+.percent{
+    margin-left: 60px;
+}
+
+.buttonssocail {
+    text-align: left;
+}
+
+.btnss {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    margin-left: 10px;
+   border-radius: 10px;
+    cursor: pointer;
+	height: 35px;
+    width: 70px;
+    margin-top: 30px;
+    text-align: center;
+    color: black;
+
+}
+.btntt {
+	background-color: #ebebebc7;
+	border: 10px;
+	margin-left: 20px;
+	height: 35px;
+	border-radius: 10px;
+    margin-top: 5px;
+    width: 75px;
+    color: black;
+}
+
+.btntt.active {
+    background-color: #cdcccc;
+    color: white;
+	
+}
+.linsocial{
+    color: #cdcccc;
+    margin-left: 20px;
+    margin-top: -1px;
+}
+
+.tiltleactiv{
+   margin-left: 350px;
+   margin-top: -20px;
+   font-size: 20px;
+   color: black;
+}
+.boxsocai{
+    width: 250px;
+    height: 35px;
+    background-color: #eaecec;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.snapcolu{
+    color: #cdcccc;
+    margin-left: 10px;
+   
+}
+.snapcol{
+    color: #cdcccc;
+    margin-left: 50px;
+  
+}
+
+.perec {
+    background-color: rgb(250, 227, 233);
+    width: 60px;
+    height: 100px;   
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    margin-top: auto;
+}
+.analytics_1{
+    width: 150px;
+    height: 30px;
+    direction: rtl;
+    margin-left: 100px;
+}

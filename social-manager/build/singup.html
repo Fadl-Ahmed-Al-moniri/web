@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+  <title>Social Media Accounts Of Management System (SMAMS)</title>
+  <link rel="stylesheet" href="css/singup.css">
+ 
+</head>
+<body>
+  <div class="container">
+    <h1>Sign up</h1>
+    <div class="logo">
+      <img src="img/icon_social_manager.png" alt="">
+    </div>
+    
+    <form id="signup-form">
+      <label for="profile-name">Profile name</label>
+      <input type="text" id="profile-name" name="profile-name" placeholder="Enter your profile name" required>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+      
+      <div class="password-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" 
+               placeholder="Enter your password" 
+               
+               required>
+        <!-- <button type="button" class="hide-button" aria-label="Toggle password visibility">Show</button> -->
+        <div class="password-error" id="password-error">Password must contain at least 9 characters with mix of letters, numbers & symbols</div>
+      </div>
+      <p class="password-hint">Use 9 or more characters with a mix of letters, numbers & symbols</p>
+      
+      <p class="terms">
+        By creating an account, you agree to the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.
+      </p>
+      
+      <div class="captcha">
+        <input type="checkbox" id="captcha" name="captcha">
+        <label for="captcha">I'm not a robot</label>
+      </div>
+      <button type="submit" class="signup-button">Sign up</button>
+    </form>
+    
+    <p class="login-link">Already have an account? <a href="login.html">Log in</a></p>
+  </div>
+
+  <!-- تضمين Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+ <script src="js/singup.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="img/icon_social_manager.png" type="image/x-icon">   
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.12.1/css/pro.min.css">
+    <link rel="stylesheet" type="text/css" href="css/Postt.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <title>Social Media Accounts Management System (SMAMS)</title>
+    
+</head>
+<body class="body"> 
+    <div class="containerPs">
+        <!-- لوحة الإنشاء -->
+        <div class="creation-panel">
+            <div class="profile-selector">
+                <div class="profile-card1" id="profileCard">
+                    <img id="profileImage" src="" class="profile-image" alt="الحساب الشخصي">
+                </div>
+            </div>
+
+            <div class="post-type">
+                <img id="platformIcon" src="" class="postfaceprofil">
+                <div class="radiopos">
+                    <input type="radio" name="postType" id="post" checked>
+                    <label for="post">Post</label>
+                    <input type="radio" name="postType" id="reel">
+                    <label for="reel">Reel</label>
+                    <input type="radio" name="postType" id="story">
+                    <label for="story">Story</label>
+                </div>
+            </div>
+            <div class="posttxfl">
+                <textarea id="postContent" placeholder="محتوى المنشور" oninput="updatePreview()"></textarea>
+                <div class="media-upload-area" onclick="document.getElementById('mediaInput').click()">
+                    <span><img class="imgpost" src="img/drop-icon.svg" alt="upload"></span>
+                    <p>Drag & drop or select a file</p>
+                    <input type="file" id="mediaInput" hidden accept="image/*, video/*">
+                </div>
+            </div>
+            <div class="buttons-container">
+                <div class="button-group">
+                    <button class="main-button">Save as Draft</button>
+                    <button class="dropdown-toggle" onclick="toggleDropdown('draft')">▼</button>
+                    <div class="dropdown-menu" id="draft-dropdown">
+                        <button class="dropdown-item"> save as 1</button>
+                        <button class="dropdown-item"> save as </button>
+                        <button class="dropdown-item">save as  </button>
+                    </div>
+                </div>
+        
+                <div class="button-group">
+                    <button class="main-button">Add to Queue</button>
+                    <button class="dropdown-toggle" onclick="toggleDropdown('queue')">▼</button>
+                    <div class="dropdown-menu" id="queue-dropdown">
+                        <button class="dropdown-item">Share Now</button>
+                        <button class="dropdown-item">Share Next</button>
+                        <button class="dropdown-item" onclick="showDateTimePicker()">Schedule Post</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="datetime-picker" id="datetime-picker">
+                <div>
+                    <input type="text" id="datetime-input" placeholder="حدد التاريخ والوقت">
+                    <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 15px;">
+                        <button onclick="schedulePost()"> Schedule</button>
+                        <button onclick="hideDateTimePicker()">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <h2 class="hd2pr">Preview</h2>
+            <div class="preview-content">
+                <div class="preview-header">
+                    <img id="previewProfileImg" class="profile-image" src="">
+                    <div class="prnameuser">
+                        <h3 contenteditable="true" class="editable-content" id="previewProfileName"></h3>
+                    </div>
+                </div>
+                <p contenteditable="true" class="editable-content" id="previewText">UNIVERSITY OF AZAL FOR SCIENCES AND TECHNOLOGY</p>
+                <div class="media-preview" id="mediaPreview"><img class="primg" src="img/images.jfif"></div>
+                <div class="media-context-menu">
+                    <button class="dots-btn">⋮</button>
+                    <div class="menu-content">
+                        <button onclick="deleteMedia()">حذف الصورة</button>
+                        <button onclick="editMedia()">تعديل الصورة</button>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn" id="likeBtn" onclick="toggleLike()">
+                        <i class="far fa-heart"></i>
+                        <span id="likeCount">0</span>
+                    </button>
+                    <button class="action-btn" onclick="sharePost()">
+                        <i class="fas fa-share"></i>
+                        مشاركة
+                    </button>
+                    <button class="action-btn" onclick="focusComment()">
+                        <span>💬</span>
+                        <span id="commentCount">0</span>
+                    </button>
+                    <button class="action-btn" onclick="">
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                </div>
+                <div class="comments-section">
+                    <div id="commentsList"></div>
+                    <div class="comment-input">
+                        <input type="text" id="commentInput" placeholder="أضف تعليقا">
+                        <button onclick="addComment()" class="sendbtnC">إرسال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/Postt.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+</body>
+</html>
