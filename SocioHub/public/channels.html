@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Windmill Dashboard</title>
+        <link rel="stylesheet" href="assets/css/loader.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+        <script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        defer
+        ></script>
+        <script src="./assets/js/init-alpine.js"></script>
+<!-- 
+        <script src="./assets/js/charts-lines.js" defer></script>
+        <script src="./assets/js/charts-pie.js" defer></script> -->
+
+    </head>
+    <body>
+
+        <div
+        class="flex min-h-screen bg-gray-50 dark:bg-gray-900 "
+        :class="{  'overflow-hidden': isSideMenuOpen }"
+        >
+        <div class="loader-overlay"></div>
+        <div class="loader"></div>
+        <!-- Desktop sidebar -->
+        
+        
+        <!-- Desktop Sidebar -->
+        <aside id="sidebar-desktop-container" class="z-20  hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"></aside>
+        
+        <div class="flex-1  flex flex-col relative self-auto">
+            <!-- Mobile Sidebar -->
+            <div id="sidebar-mobile-container"></div>
+            <div class="flex flex-col flex-1 h-full w-full relative ">
+                <header id="header-container" class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"></header>
+
+                <main class="container  p-6 mx-auto py-6 " id="dashboard-container">
+                    <!-- header body -->
+                    <div class="flex flex-nowrap justify-between items-center">
+                            <div class="mt-2 text-sm space-x-2">
+                                    <button id="filterAll"
+                                            class="filter-btn bg-blue-600  px-4 py-2 rounded-lg  text-gray-800 dark:text-gray-100">
+                                    All
+                                    </button>
+                                    <button id="filterFacebook"
+                                            class="filter-btn bg-gray-200  px-4 py-2 rounded-lg  text-gray-800 dark:text-gray-100">
+                                    Facebook
+                                    </button>
+                                    <button id="filterInstagram"
+                                            class="filter-btn bg-gray-200  px-4 py-2 rounded-lg  text-gray-800 dark:text-gray-100">
+                                    Instagram
+                                    </button>
+                            </div>
+                        <button
+                            @click="openModal"
+                            class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                        >
+                            Add Accounts
+                        </button>
+                    </div>
+                    <!-- Modal backdrop. This what you want to place close to the closing body tag -->
+                    <div
+                    x-show="isModalOpen"
+                    x-transition:enter="transition ease-out duration-150"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
+                    >
+                    <!-- Modal -->
+                        <div
+                        x-show="isModalOpen"
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 transform translate-y-1/2"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0  transform translate-y-1/2"
+                        @click.away="closeModal"
+                        @keydown.escape="closeModal"
+                        class="w-full h-auto px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
+                        role="dialog"
+                        id="modal"
+                        >
+    
+                        <header class="flex justify-between">
+                            <p
+                            class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300"
+                            >
+                            Connect a New Account 
+                            </p>
+                            <button
+                            class="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
+                            aria-label="close"
+                            @click="closeModal"
+                            >
+                            <svg
+                                class="w-4 h-4"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                role="img"
+                                aria-hidden="true"
+                            >
+                                <path
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"
+                                fill-rule="evenodd"
+                                ></path>
+                            </svg>
+                            </button>
+    
+                        </header>
+                        <!-- Modal body -->
+                        <div class="mt-8 mb-10">
+                            <!-- Modal description -->
+                            <div class="flex items-center space-x-6">
+                                <button
+                                    class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray"
+                                    @click="connectTo('Facebook')"
+                                    >
+                                    <svg
+                                        class="w-6 h-6 mr-2 text-white dark:text-white  bg-blue-600  "
+                                        aria-hidden="true"
+                                        viewBox="0 0 320 512"
+                                        fill="currentColor"
+                                    >
+                                        <path 
+                                        d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 
+                                        12.42-50.06 52.24-50.06h40.42V6.26S260.43 
+                                        0 225.36 0c-73.22 0-121.08 44.38-121.08 
+                                        124.72v70.62H22.89V288h81.39v224h100.2V288z"
+                                        />
+                                    </svg>
+                                    <span>Facebook</span>
+                                        
+                                </button>
+                                    <!-- الخط الفاصل -->
+                                    <div class="h-10 w-px bg-gray-300 dark:bg-gray-600"></div>
+                                
+                                <button
+                                    class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium leading-5 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray"
+                                    @click="connectTo('Instagram')"
+                                    >
+                                <!-- Instagram Icon -->
+                                    <svg
+                                    class="w-6 h-6 mr-2 text-white dark:text-white  bg-white  "
+                                    viewBox="0 0 448 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <defs>
+                                        <linearGradient id="InstagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#f09433" />
+                                            <stop offset="25%" stop-color="#e6683c" />
+                                            <stop offset="50%" stop-color="#dc2743" />
+                                            <stop offset="75%" stop-color="#cc2366" />
+                                            <stop offset="100%" stop-color="#bc1888" />
+                                        </linearGradient>
+                                        </defs>
+                                        <path 
+                                        fill="url(#InstagramGradient)"
+                                        d="M224.1 141c-63.6 0-114.9 51.3-114.9 
+                                        114.9s51.3 114.9 114.9 114.9 114.9-51.3 
+                                        114.9-114.9S287.7 141 224.1 141zm0 
+                                        186.6c-39.6 0-71.7-32.1-71.7-71.7s32.1-71.7 
+                                        71.7-71.7 71.7 32.1 71.7 71.7-32.1 71.7-71.7 
+                                        71.7zm146.4-194.3c0 14.9-12 26.9-26.9 
+                                        26.9s-26.9-12-26.9-26.9 12-26.9 
+                                        26.9-26.9 26.9 12 26.9 26.9zm76.1 
+                                        27.2c-1.7-35.7-9.9-67.3-36.2-93.5S382.9 
+                                        24.6 347.2 22.9c-35.7-1.7-142.8-1.7-178.5 
+                                        0-35.7 1.7-67.3 9.9-93.5 36.2S24.6 
+                                        129.1 22.9 164.8c-1.7 35.7-1.7 142.8 
+                                        0 178.5 1.7 35.7 9.9 67.3 36.2 
+                                        93.5s57.8 34.5 93.5 36.2c35.7 1.7 142.8 
+                                        1.7 178.5 0 35.7-1.7 67.3-9.9 
+                                        93.5-36.2s34.5-57.8 36.2-93.5c1.7-35.7 
+                                        1.7-142.8 0-178.5zm-48.5 
+                                        218c-7.8 19.6-22.9 35.7-42.6 
+                                        43.5-29.1 11.6-98.2 8.9-132.4 
+                                        8.9s-103.4 2.6-132.4-8.9c-19.6-7.8-34.8-23.9-42.6-43.5-11.6-29.1-8.9-98.2-8.9-132.4s-2.6-103.4 
+                                        8.9-132.4c7.8-19.6 22.9-35.7 42.6-43.5 
+                                        29.1-11.6 98.2-8.9 132.4-8.9s103.4-2.6 
+                                        132.4 8.9c19.6 7.8 34.8 23.9 
+                                        42.6 43.5 11.6 29.1 8.9 98.2 8.9 
+                                        132.4s2.7 103.4-8.9 132.4z"
+                                        />
+                                    </svg>
+                                    <span>Instagram</span>
+                                </button>
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Channels</h2>
+                    
+                <!-- Cards -->
+                    
+                <div id="accountsContainer" class="accounts-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- the card pages set here -->
+                </div>
+                </main>
+            
+                <!-- No Data Message -->
+                <div id="no-data-message" class="container px-6 mx-auto py-6 text-center hidden">
+                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">There are no items to display.</h4>
+                </div>
+        
+            </div>
+            
+        </div>
+
+        
+        <script src="assets/js/loadComponent.js"></script>
+        <script type="module" src="assets/js/pages/channel.js"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+    </body>
+</html>
