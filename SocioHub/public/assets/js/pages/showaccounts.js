@@ -164,8 +164,7 @@ async function initialCode() {
         }
         else if (PLATFORM === "Instagram") {
           // alert('Instagram');
-          // await authorization_with_instagram(code);
-        await authorization_with_instagram('AQBz4lGCh_GJ64BLcw-e-9RngMai2oYl1UxRbB_6Ag9Mgxhrnt0WqKb-MWwWjjir80GmncCbhLv9ePJQBENGN06E_l0IMVcJ8arPTb9LE2FLUeYjuIzvKziRyw0zQH5SU2QFSlHkrQHmsKKLI8QdZv8hDG6cRPdp_zCQaH3EFQC8uiPiAU-frloct7VM4oFHCQzUJTvG2EpJtKTR_w4TuuquzCxtvmxubVQyHwVWe2wiaw#_');
+          await authorization_with_instagram(code);
         }else {
           throw new Error('extracting authorization failed');
         }
