@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Windmill Dashboard</title>
+        <link rel="stylesheet" href="assets/css/loader.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+        <script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        defer
+        ></script>
+        <script src="./assets/js/init-alpine.js"></script>
+<!-- 
+        <script src="./assets/js/charts-lines.js" defer></script>
+        <script src="./assets/js/charts-pie.js" defer></script> -->
+
+    </head>
+    <body>
+
+        <div
+        class="flex min-h-screen bg-gray-50 dark:bg-gray-900 "
+        :class="{  'overflow-hidden': isSideMenuOpen }"
+        >
+        <div class="loader-overlay"></div>
+        <div class="loader"></div>
+        <!-- Desktop sidebar -->
+        
+        
+        <!-- Desktop Sidebar -->
+        <aside id="sidebar-desktop-container" class="z-20  hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"></aside>
+        
+        <div class="flex-1  flex flex-col relative self-auto">
+            <!-- Mobile Sidebar -->
+            <div id="sidebar-mobile-container"></div>
+            <div class="flex flex-col flex-1 h-full w-full relative ">
+                <header id="header-container" class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"></header>
+
+                <!-- No Data Message -->
+                <div id="no-data-message" class="container px-6 mx-auto py-6 text-center hidden">
+                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">There are no items to display.</h4>
+                </div>
+        
+            </div>
+            
+        </div>
+
+        
+        <script src="assets/js/loadComponent.js"></script>
+        <script type="module" src="assets/js/pages/channel.js"></script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+    </body>
+</html>

@@ -5,6 +5,6 @@ export function getUserToken() {
         return token; 
     } else {
         alert("An error occurred, please log in again.");
-        window.location.href = '../../../pages/login.html'; 
+        window.location.href = 'pages/login.html'; 
     }
 }

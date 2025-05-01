@@ -258,7 +258,6 @@ async function disconnectInstgram(accountId) {
       if (response.status === 200 && response.data.data) {
         
         window.location.reload();
-
         
       } else {
         throw new Error(response.data.message || 'Failed to get Instagram accounts');

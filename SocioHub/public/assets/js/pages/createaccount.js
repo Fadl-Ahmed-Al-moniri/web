@@ -3,34 +3,36 @@ import { showLoader, hideLoader }  from '../utils/loader.js';
 import { API_ENDPOINTS }  from '../endpoint.js';
 
 
-// تسجيل الحدث بعد تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('login-form');
+    const form = document.getElementById('create-account-form');
     form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const name = form.username.value;
     const email = form.email.value;
     const password = form.password.value;
 
     try {
         showLoader();
-        const response = await postRequest( API_ENDPOINTS.Auth.login, {
+        const response = await postRequest( API_ENDPOINTS.Auth.signup, {
+        username:name,
         email: email,
         password: password,
         });
-        if (response.status === 200) {
-            console.log(response.data.token)
-            localStorage.setItem('user_token',  response.data.token);
-            window.location.href = '../index.html';
+        if (response.status === 201) {
+            alert(response.data.message);
+            window.location.href = 'login.html';
         } else {
-            alert('Login failed: ' + (response?.data?.message.message || 'Invalid credentials'));
+            alert('Create Account failed: ' + (response.data.message.email ));
         }
     } catch (err) {
-        const message = err.response?.data?.message.message || 'login failed';
-        console.log(err)
+        const message = err.response?.message || 'Create Account failed';
         alert('An error occurred: ' + message);
     }finally {
         hideLoader();
     }
     });
+
+
+
 });

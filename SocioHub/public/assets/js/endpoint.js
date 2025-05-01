@@ -11,12 +11,26 @@ export const getInfoDashbord = `${serverUrl}/post/get_info_dashbord/`;
 
 export const API_ENDPOINTS = {
     Auth:{
-        login  :`${serverUrl}/auth/login`, 
+        login  :`${serverUrl}/auth/login/`, 
         signup  :`${serverUrl}/auth/`, 
+    },
+    User:{
+        createEmp:`${serverUrl}/emp/create/`,
+        updateEmpAdv:`${serverUrl}/emp/update-advance/`,
+        getEmp:`${serverUrl}/emp/get_emps/`,
+        deleteEmp:`${serverUrl}emp/delete/`,
+        activateEmp:`${serverUrl}/emp/activate/`,
+        deactivateEmp:`${serverUrl}/emp/deactivate/`,
+        roleList:`${serverUrl}/emp/roleList/`,
+        getInfo:`${serverUrl}/emp/info/`,
+        updateInfo:`${serverUrl}/emp/update/`,
+        
     }
     ,
     Page:{
-        dashbord : `${serverUrl}/post/get_info_dashbord/`
+        dashbord : `${serverUrl}/post/get_info_dashbord/`,
+        analyses : `${serverUrl}/engage/get_pages_info/`,
+        getPages : `${serverUrl}/social-manager/get_pages/`,
     },
     Facebook: {
         authToken: `${serverUrl}/facebook/get_info/`,

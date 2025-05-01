@@ -7,7 +7,6 @@ function loadComponent(id, file) {
       .catch(err => console.error("فشل في تحميل المكون:", err));
   }
 
-  // تحميل الهيدر
 loadComponent("header-container", 'assets/js/components/header.html');
 loadComponent("sidebar-desktop-container", "assets/js/components/sidebar-desktop.html");
 loadComponent("sidebar-mobile-container",  "assets/js/components/sidebar-mobile.html");
