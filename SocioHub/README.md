@@ -1,4 +1,4 @@
-# Windmill Dashboard
+# Sociolyze Dashboard
 
 A multi theme, completely accessible, with components and pages examples, ready for production dashboard.
 
