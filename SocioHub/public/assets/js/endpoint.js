@@ -13,6 +13,7 @@ export const API_ENDPOINTS = {
     Auth:{
         login  :`${serverUrl}/auth/login/`, 
         signup  :`${serverUrl}/auth/`, 
+        passwordReset  :`${serverUrl}/password-reset/`, 
     },
     User:{
         createEmp:`${serverUrl}/emp/create/`,
@@ -24,7 +25,6 @@ export const API_ENDPOINTS = {
         roleList:`${serverUrl}/emp/roleList/`,
         getInfo:`${serverUrl}/emp/info/`,
         updateInfo:`${serverUrl}/emp/update/`,
-        
     }
     ,
     Page:{

@@ -45,14 +45,12 @@ export async function postRequest(url, data = {}, token = null, params = {}) {
     // تركيب query parameters إذا وُجدت
     const queryString = new URLSearchParams(params).toString();
     const fullUrl = queryString ? `${url}?${queryString}` : url;
-    alert(data);
-    console.log(data);
+
     const response = await fetch(fullUrl, {
         method: 'POST',
         headers,
         body: JSON.stringify(data),
     });
-    alert(response.message);
     const result = await response.json();   
 
     return { response, status: response.status, data: result };
