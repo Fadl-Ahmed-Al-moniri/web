@@ -7,6 +7,7 @@ import {
     loginWithFacebook,
     sendAccessTokenToServer
 } from '../utils/facebook-sdk.js';
+import { initLogout } from '../utils/logout.js'
 
 const accountsList = document.getElementById('accountsList');
 const platformIcon = document.getElementById('platformIcon');
@@ -48,8 +49,6 @@ function handleAccountSelection(event) {
     const accountId = event.target.dataset.accountId;
     if (event.target.checked) {
     if (!SELECTED_ACCOUNTS_IDS.includes(accountId)) {
-        alert(accountId);
-
         SELECTED_ACCOUNTS_IDS.push(accountId);
     }
     } else {
@@ -274,7 +273,10 @@ function setupEventListeners() {
     finishConnection.addEventListener('click', handleFinishConnection);
     // updateFinishButtonState();
 }
-document.addEventListener('DOMContentLoaded', initializeUI);
+document.addEventListener('DOMContentLoaded', () => {
+  initializeUI();
+  initLogout();
+});
 // document.addEventListener('DOMContentLoaded', getInstagramCode);
 
 window.SELECTED_ACCOUNTS_IDS = SELECTED_ACCOUNTS_IDS;

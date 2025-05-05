@@ -2,6 +2,7 @@ import { postRequest, getRequest } from '../services/apiService.js';
 import { showLoader, hideLoader } from '../utils/loader.js';
 import { API_ENDPOINTS } from '../endpoint.js';
 import { getUserToken } from '../utils/user-token.js';
+import { initLogout } from '../utils/logout.js'
 
 const token = getUserToken();
 const form = document.getElementById('employeeForm');
@@ -225,6 +226,7 @@ async function deleteEmp(email) {
 document.addEventListener('DOMContentLoaded', () => {
   fetchRoles();
   loadEmployees();
+  initLogout();
 });
 
 

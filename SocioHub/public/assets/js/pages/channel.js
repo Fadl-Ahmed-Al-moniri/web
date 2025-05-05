@@ -2,7 +2,7 @@ import { postRequest, getRequest } from '../services/apiService.js';
 import { showLoader, hideLoader } from '../utils/loader.js';
 import { getUserToken } from '../utils/user-token.js';
 import { API_ENDPOINTS} from '../endpoint.js';
-
+import { initLogout } from '../utils/logout.js'
 import {initializeFacebookSDK , loginWithFacebook } from '../utils/facebook-sdk.js'
 
 const token =getUserToken();
@@ -16,7 +16,7 @@ async function connectTo(platform) {
             alert("فشل تسجيل الدخول.");
             return;
         }
-        const url = new URL("/public/showaccounts.html", window.location.href);
+        const url = new URL("showaccounts.html", window.location.href);
         
         url.searchParams.set("code", accessToken);
         
@@ -304,6 +304,7 @@ function initFilters() {
 }
 document.addEventListener('DOMContentLoaded', async () => {
     await getConnectedAccounts();  
+    initLogout();
     initFilters();              
     initializeFacebookSDK(); 
 });

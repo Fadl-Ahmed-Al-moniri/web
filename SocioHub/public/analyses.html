@@ -14,8 +14,48 @@
         src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
         defer
         ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZzOWx1dYMZbDg0UOqQrHcZi3f0ZxrLpKSLW8j1wJ7F1Fr5owQmY..." crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="./assets/js/init-alpine.js"></script>
+        <style>
+            /* تنسيق الطباعة */
+@media print {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff !important;
+    }
 
+    /* رأس التقرير */
+    .pdf-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        pointer-events: none;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    /* إزالة الهوامش بين العناصر */
+    .card {
+        margin-top: 3rem; /* لتجنب التداخل مع الرأس */
+        page-break-inside: avoid;
+    }
+
+    /* تحسين المخططات */
+    canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* إزالة العناصر غير المرغوب فيها */
+    .loader,
+    .logout-btn {
+        display: none;
+    }
+}
+        </style>
 
     </head>
     <body>
@@ -28,7 +68,7 @@
         <div class="loader"></div>
         <!-- Desktop sidebar -->
         
-        
+        <div class="page-border"></div>
         <!-- Desktop Sidebar -->
         <aside id="sidebar-desktop-container" class="z-20  hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"></aside>
         
@@ -59,7 +99,7 @@
                             >
                             View Reports
                             </button>
-                            <button id="printpdf" @click="printReport" class="filter-btn flex bg-blue-600  text-sm px-4 py-2 rounded-lg  text-white dark:text-gray-100">
+                            <button id="printpdf" @click="printReport" class="filter-btn px-3 py-3 flex bg-blue-600  text-sm  rounded-lg  text-white dark:text-gray-100">
                                     <span>
                                         Print PDF
                                     </span>
@@ -78,13 +118,10 @@
                                     ></path>
                                 </svg>
                             </button>
-                            
-
                         </div>
                     </header>
                     <!-- Page cards go here -->
                     <div id="pagesContainer" class="flex flex-wrap gap-6 mb-8"></div>
-                  
                     <!-- Analytics dashboard -->
                     <div id="dashboard" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
                     

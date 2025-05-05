@@ -2,6 +2,8 @@ import { postRequest, getRequest } from '../services/apiService.js';
 import { showLoader, hideLoader } from '../utils/loader.js';
 import { getUserToken } from '../utils/user-token.js';
 import { API_ENDPOINTS } from '../endpoint.js';
+import { initLogout } from '../utils/logout.js'
+
 
 const token = getUserToken();
 
@@ -97,3 +99,7 @@ document.getElementById('logoutBtn')
 });
 
 window.addEventListener('DOMContentLoaded', fetchInfoAccount);
+
+document.addEventListener('DOMContentLoaded', () => {
+    initLogout();
+});

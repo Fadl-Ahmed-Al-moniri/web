@@ -1,12 +1,12 @@
 import { postRequest } from '../services/apiService.js';
 import { showLoader, hideLoader }  from '../utils/loader.js';
 import { getUserToken }  from '../utils/user-token.js';
-
+import { initLogout } from '../utils/logout.js'
 import {API_ENDPOINTS} from '../endpoint.js'
 
 const token =  getUserToken(); 
 document.addEventListener('DOMContentLoaded',async () => {
-
+    initLogout();
     try {
         showLoader();
         const token =  localStorage.getItem('user_token'); 
@@ -67,3 +67,4 @@ document.addEventListener('DOMContentLoaded',async () => {
     }
 
 });
+
