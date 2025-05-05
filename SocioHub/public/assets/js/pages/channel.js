@@ -16,7 +16,7 @@ async function connectTo(platform) {
             alert("فشل تسجيل الدخول.");
             return;
         }
-        const url = new URL("showaccounts.html", window.location.href);
+        const url = new URL("web/SocioHub/public/showaccounts.html", window.location.href);
         
         url.searchParams.set("code", accessToken);
         
