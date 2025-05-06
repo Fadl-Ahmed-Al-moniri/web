@@ -3,7 +3,6 @@ import { showLoader, hideLoader }  from '../utils/loader.js';
 import { API_ENDPOINTS }  from '../endpoint.js';
 
 
-// تسجيل الحدث بعد تحميل الصفحة
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('login-form');
     form.addEventListener('submit', async (e) => {

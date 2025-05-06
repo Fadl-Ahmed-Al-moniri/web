@@ -2,58 +2,297 @@
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Sociolyze Dashboard</title>
-        <link rel="stylesheet" href="assets/css/loader.css" />
-        <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
-        <script
-        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-        defer
-        ></script>
+        <link rel="stylesheet" href="assets/css/loader.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="./assets/css/tailwind.output.css"/>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <script src="./assets/js/init-alpine.js"></script>
-<!-- 
-        <script src="./assets/js/charts-lines.js" defer></script>
-        <script src="./assets/js/charts-pie.js" defer></script> -->
-
     </head>
-    <body>
-
-        <div
-        class="flex min-h-screen bg-gray-50 dark:bg-gray-900 "
-        :class="{  'overflow-hidden': isSideMenuOpen }"
-        >
+    <body class="flex min-h-screen bg-gray-50 dark:bg-gray-900">
         <div class="loader-overlay"></div>
         <div class="loader"></div>
-        <!-- Desktop sidebar -->
-        
-        
-        <!-- Desktop Sidebar -->
-        <aside id="sidebar-desktop-container" class="z-20  hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"></aside>
-        
-        <div class="flex-1  flex flex-col relative self-auto">
-            <!-- Mobile Sidebar -->
-            <div id="sidebar-mobile-container"></div>
-            <div class="flex flex-col flex-1 h-full w-full relative ">
-                <header id="header-container" class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"></header>
 
-                <!-- No Data Message -->
-                <div id="no-data-message" class="container px-6 mx-auto py-6 text-center hidden">
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">There are no items to display.</h4>
-                </div>
-        
+        <!-- Desktop sidebar -->
+        <aside id="sidebar-desktop-container"
+            class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block"></aside>
+
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col">
+        <!-- Mobile Sidebar -->
+        <div id="sidebar-mobile-container"></div>
+
+        <!-- Header -->
+        <header id="header-container"
+                class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"></header>
+
+        <!-- Dashboard -->
+        <main id="dashboard-container" class="container mx-auto p-6 flex-1">
+            <!-- Tabs -->
+            <div class="flex flex-nowrap justify-between items-center">
+                <div class="mt-2 text-sm space-x-2">
+                <button id="tab-sent"
+                        class="tab px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                        Sent
+                    <span class="counter bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 px-1.5 py-0.5 rounded text-xs ml-1">0</span>
+                </button>
+                
+                <button id="tab-drafts"
+                        class="tab px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                        Drafts
+                    <span class="counter bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200 px-1.5 py-0.5 rounded text-xs ml-1">0</span>
+                </button>
+
             </div>
-            
+            <div class="content-header right-0 flex justify-end items-center">
+                <button
+                @click="openModal"
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                >
+                New publish
+                </button>
+
+                <div
+                x-show="isModalOpen"
+                x-transition.opacity
+                class="fixed inset-0 z-30 flex items-end sm:items-center sm:justify-center bg-black bg-opacity-50"
+                >
+                <!-- Modal Window -->
+                <div
+                x-show="isModalOpen"
+                x-transition
+                    x-transition:enter="transition ease-out duration-150"
+                    x-transition:enter-start="opacity-0 translate-y-4"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 translate-y-4"
+                @click.away="closeModal()"
+                @keydown.escape.window="closeModal()"
+                class="w-full max-w-xl mx-4 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+                role="dialog"
+                aria-modal="true"
+                >
+                <!-- Header -->
+                <header class="flex items-center justify-between px-6 py-4 border-b dark:border-gray-700">
+                    <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    Publish a new Post
+                    </h3>
+                    <button
+                    @click="closeModal()"
+                    class="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+                    aria-label="Close modal"
+                    >
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 
+                            0 111.414 1.414L11.414 10l4.293 4.293a1 1 
+                            0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 
+                            0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 
+                            0 010-1.414z"
+                        />
+                    </svg>
+                    </button>
+                </header>
+
+                <!-- Body -->
+                <div class="px-6 py-4 space-y-6">
+                    <!-- Profile Selection -->
+                    <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-1">
+                        Choose the Accounts:
+                    </label>
+                    <div id="pagesContainer" class="flex flex-wrap gap-6 mb-8"></div>
+
+                    </div>
+
+                    <!-- Publication Type -->
+                    <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-1">
+                        Type publication:
+                    </label>
+                    <div class="flex items-center gap-6">
+                        <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="postType" value="post" checked class="mr-2"/>
+                        Post
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="postType" value="reels" class="mr-2"/>
+                        Reel
+                        </label>
+                    </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div>
+                    <label for="postContent" class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-1">
+                        Content
+                    </label>
+                    <textarea
+                        id="postContent"
+                        rows="4"
+                        class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                        placeholder="Write the content of the post here..."
+                    ></textarea>
+                    </div>
+
+
+                    <!-- Media Upload -->
+                    <div
+                    class="border-2 border-dashed border-gray-300 rounded p-4 text-center cursor-pointer hover:border-purple-400 transition-colors"
+                    @click="$refs.mediaInput.click()"
+                    >
+                    <img src="img/drop-icon.svg" alt="Upload a file" class="mx-auto mb-2"/>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Drag & drop or select a file</p>
+                    <input type="file" x-ref="mediaInput" class="hidden" accept="image/*, video/*"/>
+                    <p id="mediaFileName" class="mt-1 text-xs text-gray-600 dark:text-gray-400"></p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex justify-end gap-3">
+                    <button
+                        id="saveDraftBtn"
+                        class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
+                    >
+                    Save as draft
+                    </button>
+                    <button
+                        id="publishNowBtn"
+                        class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                    >
+                    Publish Now
+                    </button>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            <!-- Posts area -->
+            <!-- <div id="postContainer"
+                class="posts-area bg-white dark:bg-gray-800 p-4 rounded shadow">
+               
+              
+            </div> -->
+            <div  
+            x-data="{
+              post: {
+                datetime: 'Tuesday, March 11, 2025 1:13 AM',
+                platform: 'facebook', // 'facebook' | 'instagram'
+                author: 'Fadl Ahmed Al-Moniri',
+                avatar: 'assets/img/user.svg',
+                content: 'Welcome to this post from social manager application.',
+                media: {        // media.type: 'image' | 'video' | null
+                  type: 'image',
+                  src: 'assets/img/icon_social_manager.png'
+                },
+                stats: {
+                  likes: 1,
+                  comments: 0,
+                  impressions: 3,
+                  shares: null,
+                  clicks: null
+                }
+              }
+            }"
+            class="max-w-2xl mx-auto my-6 bg-white dark:bg-gray-800 border rounded-lg shadow overflow-hidden">
+            <!-- Header: التاريخ + أيقونة المنصة -->
+            <div class="px-4 py-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+              <span x-text="post.datetime"></span>
+              <template x-if="post.platform === 'facebook'">
+                <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.2V288z"/>
+                </svg>
+              </template>
+              <template x-if="post.platform === 'instagram'">
+                <svg class="w-4 h-4 text-pink-500" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M7.75 2h8.5C19.821 2 22 …"/>
+                </svg>
+              </template>
+            </div>
+          
+            <!-- محتوى الكارد -->
+            <div class="p-4 space-y-4  justify-center flex ">
+              <!-- المؤلف والنص -->
+              <div class="flex items-start space-x-3">
+                <img :src="post.avatar" alt="" class="object-cover mr-2 w-8 h-8 rounded-full">
+                <div class="flex-1">
+                  <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200" x-text="post.author"></h3>
+                  <p class="mt-1 text-gray-700 dark:text-gray-300 text-sm" x-text="post.content"></p>
+                </div>
+              </div>
+          
+              <!-- الوسائط -->
+              <template x-if="post.media.type === 'image'">
+                <img :src="post.media.src" alt="" class="w-64 rounded-lg object-cover">
+              </template>
+              <template x-if="post.media.type === 'video'">
+                <video :src="post.media.src" controls class="w-full rounded-lg"></video>
+              </template>
+          
+              <!-- إذا لا يوجد وسائط -->
+              <template x-if="!post.media.type">
+                <div class="text-center text-gray-400 dark:text-gray-500 italic text-sm">
+                  No media attached
+                </div>
+              </template>
+            </div>
+          
+            <!-- أرقام الإحصائيات -->
+            <div class="flex items-center justify-between px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-600 dark:text-gray-400">
+              <div>
+                <span class=" font-semibold text-gray-800 dark:text-gray-100" x-text="post.stats.likes"></span>
+                Likes
+              </div>
+              <div>
+                <span class=" font-semibold text-gray-800 dark:text-gray-100" x-text="post.stats.comments"></span>
+                Comments
+              </div>
+
+            </div>
+          
+            <!-- Footer: روابط مشاهدة / مزيد من الخيارات -->
+            <div class=" px-4 py-2 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+              <div class="flex items-center space-x-1">
+                <span>Posted from</span>
+                <template x-if="post.platform === 'facebook'">
+                  <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477…"/>
+                  </svg>
+                </template>
+                <template x-if="post.platform === 'instagram'">
+                  <svg class="w-4 h-4 text-pink-500" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.75 2h8.5C19.821 2 22…"/>
+                  </svg>
+                </template>
+              </div>
+              <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M15 10l4.553-2.276a1 1 0 011.447.895v8.762a1 1 0 01-1.447.895L15 14M4 6h16M4 18h16"/>
+                </svg>
+                <span>View Post</span>
+              </button>
+              <button class="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6 10a2 2 0 012-2h4a2 2 0 110 4H8a2 2 0 01-2-2z"/>
+                </svg>
+              </button>
+            </div>
+            </div>
+            <!-- No-data message -->
+            <div id="no-data-message"
+                class="text-center py-6 text-gray-700 dark:text-gray-300 hidden">
+            <h4 class="font-semibold">There are no items to display.</h4>
+            </div>
+        </main>
         </div>
 
-        
         <script src="assets/js/loadComponent.js"></script>
-        <script type="module" src="assets/js/pages/channel.js"></script>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-
+        <script type="module" src="assets/js/pages/publication.js"></script>
     </body>
 </html>

@@ -84,7 +84,7 @@ function renderPageCards(pages) {
   
       c.appendChild(card);
     });
-  }
+}
   
 
 function handleSubmit() {
