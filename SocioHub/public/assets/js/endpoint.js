@@ -47,6 +47,11 @@ export const API_ENDPOINTS = {
         getInfoAccounts: `${serverUrl}/instagram-professional/refresh_account/`, 
         disconnect: `${serverUrl}/instagram-professional/disconnect_account/`, 
 
+    },
+    Post:{
+        getPost:`${serverUrl}/post/get_multiple_pages_posts/`,
+        publish:`${serverUrl}/post/publish/`,
+
     }
 };
 

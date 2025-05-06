@@ -16,16 +16,16 @@
 
         <!-- Desktop sidebar -->
         <aside id="sidebar-desktop-container"
-            class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block"></aside>
+            class="z-20  hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block"></aside>
 
         <!-- Main content -->
         <div class="flex-1 flex flex-col">
         <!-- Mobile Sidebar -->
-        <div id="sidebar-mobile-container"></div>
+        <div id=" sidebar-mobile-container"></div>
 
         <!-- Header -->
         <header id="header-container"
-                class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"></header>
+                class=" z-10 w-full  top-0 py-4 bg-white shadow-md dark:bg-gray-800"></header>
 
         <!-- Dashboard -->
         <main id="dashboard-container" class="container mx-auto p-6 flex-1">
@@ -116,7 +116,7 @@
                     </label>
                     <div class="flex items-center gap-6">
                         <label class="flex items-center cursor-pointer">
-                        <input type="radio" name="postType" value="post" checked class="mr-2"/>
+                        <input  type="radio" name="postType" value="post" checked class="mr-2"/>
                         Post
                         </label>
                         <label class="flex items-center cursor-pointer">
@@ -169,126 +169,18 @@
                 </div>
                 </div>
                 </div>
-
+                <hr>
             </div>
             </div>
 
-            <!-- Posts area -->
-            <!-- <div id="postContainer"
-                class="posts-area bg-white dark:bg-gray-800 p-4 rounded shadow">
-               
-              
-            </div> -->
-            <div  
-            x-data="{
-              post: {
-                datetime: 'Tuesday, March 11, 2025 1:13 AM',
-                platform: 'facebook', // 'facebook' | 'instagram'
-                author: 'Fadl Ahmed Al-Moniri',
-                avatar: 'assets/img/user.svg',
-                content: 'Welcome to this post from social manager application.',
-                media: {        // media.type: 'image' | 'video' | null
-                  type: 'image',
-                  src: 'assets/img/icon_social_manager.png'
-                },
-                stats: {
-                  likes: 1,
-                  comments: 0,
-                  impressions: 3,
-                  shares: null,
-                  clicks: null
-                }
-              }
-            }"
-            class="max-w-2xl mx-auto my-6 bg-white dark:bg-gray-800 border rounded-lg shadow overflow-hidden">
-            <!-- Header: التاريخ + أيقونة المنصة -->
-            <div class="px-4 py-2 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-              <span x-text="post.datetime"></span>
-              <template x-if="post.platform === 'facebook'">
-                <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.2V288z"/>
-                </svg>
-              </template>
-              <template x-if="post.platform === 'instagram'">
-                <svg class="w-4 h-4 text-pink-500" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M7.75 2h8.5C19.821 2 22 …"/>
-                </svg>
-              </template>
-            </div>
-          
-            <!-- محتوى الكارد -->
-            <div class="p-4 space-y-4  justify-center flex ">
-              <!-- المؤلف والنص -->
-              <div class="flex items-start space-x-3">
-                <img :src="post.avatar" alt="" class="object-cover mr-2 w-8 h-8 rounded-full">
-                <div class="flex-1">
-                  <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200" x-text="post.author"></h3>
-                  <p class="mt-1 text-gray-700 dark:text-gray-300 text-sm" x-text="post.content"></p>
-                </div>
-              </div>
-          
-              <!-- الوسائط -->
-              <template x-if="post.media.type === 'image'">
-                <img :src="post.media.src" alt="" class="w-64 rounded-lg object-cover">
-              </template>
-              <template x-if="post.media.type === 'video'">
-                <video :src="post.media.src" controls class="w-full rounded-lg"></video>
-              </template>
-          
-              <!-- إذا لا يوجد وسائط -->
-              <template x-if="!post.media.type">
-                <div class="text-center text-gray-400 dark:text-gray-500 italic text-sm">
-                  No media attached
-                </div>
-              </template>
-            </div>
-          
-            <!-- أرقام الإحصائيات -->
-            <div class="flex items-center justify-between px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-600 dark:text-gray-400">
-              <div>
-                <span class=" font-semibold text-gray-800 dark:text-gray-100" x-text="post.stats.likes"></span>
-                Likes
-              </div>
-              <div>
-                <span class=" font-semibold text-gray-800 dark:text-gray-100" x-text="post.stats.comments"></span>
-                Comments
-              </div>
 
-            </div>
-          
-            <!-- Footer: روابط مشاهدة / مزيد من الخيارات -->
-            <div class=" px-4 py-2 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
-              <div class="flex items-center space-x-1">
-                <span>Posted from</span>
-                <template x-if="post.platform === 'facebook'">
-                  <svg class="w-4 h-4 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477…"/>
-                  </svg>
-                </template>
-                <template x-if="post.platform === 'instagram'">
-                  <svg class="w-4 h-4 text-pink-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M7.75 2h8.5C19.821 2 22…"/>
-                  </svg>
-                </template>
-              </div>
-              <button class="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path d="M15 10l4.553-2.276a1 1 0 011.447.895v8.762a1 1 0 01-1.447.895L15 14M4 6h16M4 18h16"/>
-                </svg>
-                <span>View Post</span>
-              </button>
-              <button class="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M6 10a2 2 0 012-2h4a2 2 0 110 4H8a2 2 0 01-2-2z"/>
-                </svg>
-              </button>
-            </div>
-            </div>
-            <!-- No-data message -->
-            <div id="no-data-message"
-                class="text-center py-6 text-gray-700 dark:text-gray-300 hidden">
-            <h4 class="font-semibold">There are no items to display.</h4>
-            </div>
+            <!-- مكان الكاردات في الـ HTML -->
+            <div id="postsContainer" class="space-y-6"></div>
+            <p id="noPostsMessage" class="hidden text-center text-gray-500 dark:text-gray-400 py-8">
+                There are no posts to display.
+            </p>
+
+
         </main>
         </div>
 
