@@ -335,6 +335,8 @@ publishNowBtn.addEventListener('click', e => {
 
 async function publish() {
     try {
+            showLoader();
+
         
     
     if (!selectedPageIds.length) {
