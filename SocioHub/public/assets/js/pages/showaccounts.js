@@ -128,8 +128,8 @@ async function authorization_with_instagram(instagram_code) {
 
 
 function showAccounts(account) {
-    const accountId = account.id || account.account_id;
-    const userId = account.userId || '';
+    const accountId = (account.id || account.account_id).toString();
+    const userId = (account.userId || '').toString();
       return `
         <div class="account-item flex items-center justify-between p-4 border rounded-lg mb-3 hover:bg-gray-50 transition-colors">
             <div class="flex items-center space-x-4">
